@@ -1,45 +1,45 @@
 name: ci
 
+env:
+  APP_NAME: nuxt2setup
+  PATH: /home/ghrunner/projects/nuxt2setup
+  VERSION: $GITHUB_RUN_ID
+
 on:
   push:
     branches:
       - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
+    runs-on: self-hosted
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
-
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.5
-        with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
-
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2.1.4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+        uses: actions/checkout@main
 
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
       - name: Run linter 👀
         run: npm run lint
+
+      
+  cd: 
+    runs-on: self-hosted
+    needs: ci
+    steps: 
+      - name: move codebase 🚧
+        run: |
+          mkdir -p ${{ env.PATH }}/${{ env.VERSION }}/
+          cp -r * ${{ env.PATH }}/${{ env.VERSION }}/
+          ln -sf ${{ env.PATH }}conf/.env ${{ env.PATH }}/${{ env.$VERSION }}/.env
+          cd ${{ env.PATH }}/${{ env.VERSION }}/
+
+      - name: build 🏗️
+        run: npm run build
+
+      - name: deploy
+        run: |
+          pm2 start npm --name {{ env.APP_NAME }} -- start
 
