@@ -5,6 +5,12 @@ env:
   PATH: /home/ghrunner/projects/nuxt2setup
   VERSION: $GITHUB_RUN_ID
 
+script: |
+  export NVM_DIR=~/.nvm
+  source ~/.nvm/nvm.sh 
+  node -v
+  npm -v
+
 on:
   push:
     branches:
@@ -14,13 +20,7 @@ jobs:
   ci:
     runs-on: self-hosted
 
-    steps:
-      - name: check environment
-        run: |
-          export NVM_DIR=~/.nvm
-          source ~/.nvm/nvm.sh 
-          node -v
-          npm -v
+    steps:          
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
