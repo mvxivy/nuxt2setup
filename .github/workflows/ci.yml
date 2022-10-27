@@ -17,7 +17,8 @@ jobs:
     steps:
       - name: check environment
         run: |
-          cd ${{ env.PATH }}
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh 
           node -v
           npm -v
       - name: Install dependencies 👨🏻‍💻
