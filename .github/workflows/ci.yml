@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p ${{ env.PATH }}/${{ env.VERSION }}/
           cp -r * ${{ env.PATH }}/${{ env.VERSION }}/
-          ln -sf ${{ env.PATH }}conf/.env ${{ env.PATH }}/${{ env.$VERSION }}/.env
+          ln -sf ${{ env.PATH }}conf/.env ${{ env.PATH }}/${{ env.VERSION }}/.env
           cd ${{ env.PATH }}/${{ env.VERSION }}/
 
       - name: build 🏗️
