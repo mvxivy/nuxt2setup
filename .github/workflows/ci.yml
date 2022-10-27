@@ -16,12 +16,11 @@ jobs:
 
     steps:          
       - name: Install dependencies 👨🏻‍💻
-        with: 
-          script: |
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh 
-            node -v
-            npm -v
+        script: |
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh 
+          node -v
+          npm -v
         run: npm ci --prefer-offline --no-audit
 
       - name: Run linter 👀
