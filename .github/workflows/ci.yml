@@ -11,6 +11,14 @@ on:
       - main
 
 jobs:
+  bash-example:
+    runs-on: self-hosted
+    steps:
+      - name: Group of log lines
+        run: |
+            echo "::group::My title"
+            echo "Inside group"
+            echo "::endgroup::"
   ci:
     runs-on: self-hosted
 
