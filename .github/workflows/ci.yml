@@ -15,9 +15,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@main
-
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
