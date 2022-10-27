@@ -16,10 +16,10 @@ jobs:
 
     steps:
       -name: check environment
-      -run: |
-            cd ${{ env.PATH }}
-            node -v
-            npm -v
+        run: |
+              cd ${{ env.PATH }}
+              node -v
+              npm -v
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
