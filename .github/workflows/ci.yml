@@ -13,18 +13,15 @@ on:
 jobs:
   ci:
     runs-on: self-hosted
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+        
+      - name: Install dependencies 👨🏻‍💻          
+        run: npm ci --prefer-offline --no-audit
 
-    steps:  
-      - name: switch to correct user         
-        run: |
-          whoami
-          neofetch
-
-      # - name: Install dependencies 👨🏻‍💻          
-      #   run: npm ci --prefer-offline --no-audit
-
-      # - name: Run linter 👀
-      #   run: npm run lint
+      - name: Run linter 👀
+        run: npm run lint
 
   # cd: 
   #   runs-on: self-hosted
