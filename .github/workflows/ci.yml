@@ -11,23 +11,18 @@ on:
       - main
 
 jobs:
-  check:
+  ci:
     runs-on: self-hosted
 
     steps:  
-      name: check os env
-      run: |
-        whoami
-        neofetch
-  # ci:
-  #   runs-on: self-hosted
+      - name: Install dependencies 👨🏻‍💻          
+        run: whoami && neofetch
 
-  #   steps:          
-  #     - name: Install dependencies 👨🏻‍💻          
-  #       run: npm ci --prefer-offline --no-audit
+      # - name: Install dependencies 👨🏻‍💻          
+      #   run: npm ci --prefer-offline --no-audit
 
-  #     - name: Run linter 👀
-  #       run: npm run lint
+      # - name: Run linter 👀
+      #   run: npm run lint
 
   # cd: 
   #   runs-on: self-hosted
