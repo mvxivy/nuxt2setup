@@ -13,9 +13,9 @@ on:
 jobs:
   check:
     runs-on: self-hosted
-    
+
     steps:  
-      - name: check os env
+      name: check os env
       run: |
         whoami
         neofetch
