@@ -11,9 +11,10 @@ on:
       - main
 
 jobs:
-  trytofix:
-    runs-on: self-hosted
-    - run: |
+  check:
+
+    runs-on: self-hosted 
+    run: |
       whoami
       neofetch
   # ci:
