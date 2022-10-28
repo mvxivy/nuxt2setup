@@ -15,8 +15,11 @@ jobs:
     runs-on: self-hosted
 
     steps:  
-      - name: Install dependencies 👨🏻‍💻          
-        run: whoami && neofetch
+      - name: switch to correct user         
+        run: |
+          sudo -u ghrunner -i
+          whoami
+          neofetch
 
       # - name: Install dependencies 👨🏻‍💻          
       #   run: npm ci --prefer-offline --no-audit
