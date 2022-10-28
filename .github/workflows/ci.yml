@@ -14,9 +14,11 @@ jobs:
   check:
 
     runs-on: self-hosted 
-    run: |
-      whoami
-      neofetch
+    steps:
+      - name: check os env
+      run: |
+        whoami
+        neofetch
   # ci:
   #   runs-on: self-hosted
 
